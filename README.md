@@ -33,7 +33,7 @@ probabilities – array of the top 3 probability values <br>
 <h2>How to use?</h2>
 1. Create spect2class conda environment with the proveided file spec2class_env.yml<br>
 <br>
-2. Download the trained models
+2. Download the trained models<br>
   2.1 Download and save all the binary models (43 models) from hugging face hub: https://huggingface.co/VickiPol/binary_models<br>
   <br>
   2.2 Download and save the SVM model from hugging face hub: https://huggingface.co/VickiPol/SVM_model<br>
@@ -58,5 +58,8 @@ python Spec2Class.py config_file_path input_path output_directory output_name <b
 config file path is the path to config_spec2class.ini<br>
 input_path is the path to mona_100_spec.pkl<br>
 output diractory and name is straight forward :)<br>
-5. If everything worked your good to go with your own data! else contact us :)
-6. It is possible and even recomended to run Spec2Class on GPU. The inference will be much faster. If 'cuda' is available GPU will ne used automatically.
+<br>
+5. If everything worked your good to go with your own data! else contact us :)<br>
+<br>
+6. It is possible and even recomended to run Spec2Class on GPU. The inference will be much faster. If 'cuda' is available GPU will ne used automatically.<br>
+<br>
