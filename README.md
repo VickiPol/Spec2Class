@@ -13,7 +13,7 @@ Mass spectrometry is commonly used in studying metabolism and natural products, 
 We developed Spec2Class, a deep-learning algorithm for the classification of plant secondary metabolites from high resolution LC-MS/MS spectra. We used a unique in-house spectral library of ~8000 plant metabolite chemical standards, alongside publicly available data, to train Spec2Class to classify LC-MS/MS spectra to tens of common plant secondary metabolite classes. Tested on held out sets, our algorithm achieved an accuracy of 73%, and an average binary classification auROC of 0.94.
 <h2>b. Model description</h2>
 Spec2Class is an ensemble classification model built out of 43 binary classifiers that serve as base classifiers. Each binary classifier is a neural net model built out of two convolutional layers, followed by three fully connected linear layers. For each binned spectrum 43 binary predictions are generated and concatenated to a single vector that serves as an input to an SVM model that provides the final multiclass prediction of the chemical class.<br>
-![image](https://github.com/AharoniLab/Spec2Class/blob/main/architecture_v1.png, raw = true)
+![image](https://github.com/VickiPol/Spec2Class/architecture_v1.png, raw = true)
 <h2>c. Input description</h2>
 The model’s input should be in a tabular format and saved in a .pkl  (pickle) format. Each row in the input dataframe should represent one **positive** LC-MS/MS spectrum.<br>
 The dataframe can contain different metadata columns, but should contain the following mandatory columns:<br>
