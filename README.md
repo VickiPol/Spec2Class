@@ -58,8 +58,5 @@ python Spec2Class.py config_file_path input_path output_directory output_name <b
 config file path is the path to config_spec2class.ini<br>
 input_path is the path to mona_100_spec.pkl<br>
 output diractory and name is straight forward :)<br>
-<br>
-
 5. If everything worked your good to go with your own data! else contact us :)
-
 6. It is possible and even recomended to run Spec2Class on GPU. The inference will be much faster. If 'cuda' is available GPU will ne used automatically.
