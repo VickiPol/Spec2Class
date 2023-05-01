@@ -31,6 +31,7 @@ estimated top2 pred – chemical class prediction with the 2nd highest probabili
 estimated top3 pred – chemical class prediction with the 3rd highest <br>
 probabilities – array of the top 3 probability values <br>
 <h2>How to use?</h2>
+Please find here user's manual in pdf format: 
 1. Create spect2class conda environment with the proveided file spec2class_env.yml<br>
 <br>
 2. Download the trained models<br>
@@ -43,13 +44,13 @@ probabilities – array of the top 3 probability values <br>
 For example:<br>
 [paths]<br>
 #The path to the trained SVM model<br>
-svm_model_path = W:\workspace\Spec2ChemClass\Vickys\Final\Spec2Class\spec2class_trained_svm.sav<br>
+svm_model_path = \Spec2Class\SVM_model\spec2class_trained_svm.sav<br>
 #The path to the directory where the 43 binary models are saved<br>
-binary_models_dir = W:\output_NP_labels\binary<br>
+binary_models_dir = \Spec2Class\binary_models\binary<br>
 #The path to the Neural Net class<br>
-net_path = W:\workspace\Spec2ChemClass\Vickys\new_models\new_model_b550.py<br>
+net_path = \Spec2Class\new_model_b550.py<br>
 #The path to the directory Neural Net class<br>
-net_dir = W:\workspace\Spec2ChemClass\Vickys\new_models<br>
+net_dir = \Spec2Class\new_models<br>
 <br>
 4. Run the model with the given input example:<br>
 <br>
@@ -57,7 +58,7 @@ python Spec2Class.py config_file_path input_path output_directory output_name <b
 <br>
 config file path is the path to config_spec2class.ini<br>
 input_path is the path to mona_100_spec.pkl<br>
-output diractory and name is straight forward :)<br>
+output directory and name is straight forward :)<br>
 <br>
 5. If everything worked your good to go with your own data! else contact us :)<br>
 <br>
