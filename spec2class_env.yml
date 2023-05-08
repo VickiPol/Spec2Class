@@ -1,4 +1,0 @@
-name: my_env
-channels:
-  - defaults
-prefix: /home/labs/aharoni/victorip/.conda/envs/my_env
