@@ -29,11 +29,11 @@ Spec2Class is an ensemble classification model built out of 43 binary classifier
 c. Input description
 --------------------
 
-The model’s input should be in a tabular format and saved in a .pkl (pickle) format. Each row in the input dataframe should represent one \*\*positive\*\* LC-MS/MS spectrum.  
+The model’s input should be in a tabular format and saved in a .pkl (pickle) format. Each row in the input dataframe should represent one **positive** LC-MS/MS spectrum.  
 The dataframe can contain different metadata columns, but should contain the following mandatory columns:  
-1.‘mz’ – array of m/z values for each row  
-2.‘Intensity’ – array of corresponding relative intensities  
-3.‘DB.’ – spectrum identifier  
+1.**‘mz’** – array of m/z values for each row  
+2.**‘Intensity’** – array of corresponding relative intensities  
+3.**‘DB.’** – spectrum identifier  
 If information about the exact mass of the parent ion exsists, name this field 'ExactMass'.  
 See example: mona\_100\_spec.pkl  
 
@@ -42,44 +42,45 @@ d. Output description
 
 The output is a tabular file in three formats: .pkl,.tsv,.csv  
 The output will contain the following columns:  
-DB. – spectrum identifier  
-final pred – chemical class prediction  
-estimated top2 pred – chemical class prediction with the 2nd highest probability  
-estimated top3 pred – chemical class prediction with the 3rd highest  
-probabilities – array of the top 3 probability values  
+**DB.** – spectrum identifier  
+**final pred** – chemical class prediction  
+**estimated top2 pred** – chemical class prediction with the 2nd highest probability  
+**estimated top3 pred** – chemical class prediction with the 3rd highest  
+**probabilities** – array of the top 3 probability values  
 
 e. How to use?
 --------------
 
-Please find here user's manual in pdf format: https://github.com/VickiPol/Spec2Class/blob/main/Spec2Class\_manual.pdf  
-1\. Create spect2class conda environment with the proveided file spec2class\_env.yml  
+Please find here user's manual in pdf format:\
+https://github.com/VickiPol/Spec2Class/blob/main/Spec2Class_manual.pdf \
+### 1\. Create spect2class conda environment with the provided file spec2class_env.yml  
   
-2\. Download the trained models  
-2.1 Download and save all the binary models (43 models) from hugging face hub: https://huggingface.co/VickiPol/binary\_models  
+### 2\. Download the trained models  
+2.1 Download and save all the binary models (43 models) from hugging face hub: https://huggingface.co/VickiPol/binary_models  
   
-2.2 Download and save the SVM model from hugging face hub: https://huggingface.co/VickiPol/SVM\_model  
+2.2 Download and save the SVM model from hugging face hub: https://huggingface.co/VickiPol/SVM/model  
   
-3\. Edit the paths in the config file config\_spec2class.ini:  
+### 3\. Edit the paths in the config file config_spec2class.ini:  
   
 For example:  
 \[paths\]  
-#The path to the trained SVM model  
-svm\_model\_path = \\Spec2Class\\SVM\_model\\spec2class\_trained\_svm.sav  
-#The path to the directory where the 43 binary models are saved  
-binary\_models\_dir = \\Spec2Class\\binary\_models\\binary  
-#The path to the Neural Net class  
-net\_path = \\Spec2Class\\new\_model\_b550.py  
-#The path to the directory Neural Net class  
-net\_dir = \\Spec2Class\\new\_models  
+#The path to the trained SVM model\
+`svm_model_path = \Spec2Class\SVM_model\spec2class_trained_svm.sav` \
+#The path to the directory where the 43 binary models are saved \
+`binary_models_dir = \Spec2Class\binary_models\binary`   
+#The path to the Neural Net class   
+`net_path = \Spec2Class\neural_net.py`    
+#The path to the directory Neural Net class   
+`net_dir = \Spec2Class\classes`   
   
-4\. Run the model with the given input example:  
+### 4\. Run the model with the given input example:  
   
-python Spec2Class.py config\_file\_path input\_path output\_directory output\_name  
+`python Spec2Class.py [config_file_path] [input_path] [output_directory] [output_name]`  
   
 config file path is the path to config\_spec2class.ini  
 input\_path is the path to mona\_100\_spec.pkl  
 output directory and name is straight forward :)  
   
-5\. If everything worked your good to go with your own data! else contact us :)  
+### 5\. If everything worked your good to go with your own data! else contact us :)  
   
-6\. It is possible and even recomended to run Spec2Class on GPU. The inference will be much faster. If 'cuda' is available GPU will ne used automatically.
+### 6\. It is possible and even recomended to run Spec2Class on GPU. The inference will be much faster. If 'cuda' is available GPU will ne used automatically.
