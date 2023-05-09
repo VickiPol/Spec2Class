@@ -24,7 +24,7 @@ b. Model description
 --------------------
 
 Spec2Class is an ensemble classification model built out of 43 binary classifiers that serve as base classifiers. Each binary classifier is a neural net model built out of two convolutional layers, followed by three fully connected linear layers. For each binned spectrum 43 binary predictions are generated and concatenated to a single vector that serves as an input to an SVM model that provides the final multiclass prediction of the chemical class.  
-![image](https://github.com/VickiPol/Spec2Class/blob/main/architecture_v1.png?raw = true)
+![image](https://github.com/VickiPol/Spec2Class/blob/main/architecture_v1.png)
 
 c. Input description
 --------------------
