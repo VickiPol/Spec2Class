@@ -36,6 +36,8 @@ The dataframe can contain different metadata columns, but should contain the fol
 3.**‘DB.’** – spectrum identifier  
 If information about the exact mass of the parent ion exsists, name this field 'ExactMass'.  
 See example: mona\_100\_spec.pkl  
+MS/MS data has different output formats. Among mostr frequent are .mgf and .msp. These formats are usually similar among different data processing platforms but not always identical.
+in **input_parsing_functions.py** you can find parsing functions that take as .mgf or .msp files as input and output a datframe that can be used with Spec2Class. These functions served us for parsing, but please take into consideration that similar file types that come from another sources might require small corrections for the given functions. 
 
 d. Output description
 ---------------------
