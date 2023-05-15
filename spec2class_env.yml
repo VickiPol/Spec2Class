@@ -175,6 +175,7 @@ dependencies:
   - zfp=0.5.5=h295c915_6
   - zlib=1.2.11=h7f8727e_4
   - zstd=1.4.9=haebb681_0
+  - pip
   - pip:
     - contourpy==1.0.7
     - focal-loss-torch==0.0.9
