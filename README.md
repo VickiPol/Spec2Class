@@ -34,10 +34,11 @@ The dataframe can contain different metadata columns, but should contain the fol
 1.**‘mz’** – array of m/z values for each row  
 2.**‘Intensity’** – array of corresponding relative intensities  
 3.**‘DB.’** – spectrum identifier  
-If information about the exact mass of the parent ion exsists, name this field 'ExactMass'.  
+If the information about the exact mass of the parent ion exsists, name this field 'ExactMass'. The parent's ion m/z is used only in spectrum the binning stage, before the first step of prediction.  
+Fragments that have m/z ratio higher than parent ion mass + 0.01 Da are dropped. If the information about the parent ion m/z is missing, then all the fragments will between 50 and 550 Da will be included.  
 **See input example: mona\_100\_spec.pkl**  
 MS/MS data has different output formats. Among mostr frequent are .mgf and .msp. These formats are usually similar among different data processing platforms but not always identical.
-in **input_parsing_functions.py** you can find parsing functions that take as .mgf or .msp files as input and output a datframe that can be used with Spec2Class. These functions served us for parsing, but please take into consideration that similar file types that come from another sources might require small corrections for the given functions. 
+in **input_parsing_functions.py** you can find parsing functions that take as .mgf or .msp files as input and output a datframe that can be used with Spec2Class. These functions served us for parsing, but please take into consideration that similar file types that come from other sources might require small corrections for the given functions. 
 
 d. Output description
 ---------------------
