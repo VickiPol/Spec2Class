@@ -1,9 +1,9 @@
 Spec2Class
 ==========
-
 Predicting metabolite chemical class out of LC-MS/MS spectrum
 -------------------------------------------------------------
-
+Developed in Aharoni and Zeevi labs at the Weizmann Institute of Science
+--------------------------------------------------------------------------
 Table of contents
 -----------------
 
