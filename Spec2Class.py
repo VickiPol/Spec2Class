@@ -31,10 +31,8 @@ def main(chemclass_list, input_df, ms1_tol,bin_width, start_value, end_value, ou
     """
 
     binned_df = binning_df(input_df, bin_width, start_value, end_value, output_name, ms1_tol)
-    # TODO: check if get_pred_veds needs update. Can it deal with positive and negative models?
     pred_vecs_df = get_pred_vecs(chemclass_list, output_name, binned_df, output_dir, end_value, start_value, bin_width,
                                  net_path, net_dir, dropout_conv, dropout_linear, binary_models_dir, params)
-    # TODO: add the p1-p2 value to the output
     final_pred_df = svm_pred(svm_model_path, output_dir, output_name, pred_vecs_df, chemclass_list)
 
     return final_pred_df
