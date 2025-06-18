@@ -5,6 +5,8 @@ import sys
 import os
 import torch.nn as nn
 import importlib
+from pandas.api.types import is_string_dtype
+
 
 
 
@@ -76,3 +78,38 @@ def make_folder(folder_path, folder_name):
         os.makedirs(new_folder_dir)
 
     return new_folder_dir
+
+def read_df_and_format_mz_intensity_arrays(df_path):
+    """
+    This function reads df in .csv/.tsv or .pkl formats and converts the mz and Intensity lists to np arrays
+    :param df_path: path to the input df
+    :return:
+    """
+
+    if df_path.endswith(".csv"):
+        df = pd.read_csv(df_path)
+
+    elif df_path.endswith(".tsv"):
+        df = pd.read_csv(df_path, sep='\t')
+
+    elif df_path.endswith(".pkl"):
+        df = pd.read_pickle(df_path)
+        # reforamting strings to arrays
+        if is_string_dtype(df.loc[df.index[0], 'Intensity']):
+            df['Intensity'] = df['Intensity'].apply(lambda x: np.fromstring(x.strip('[]'), sep=' ', dtype=float))
+
+        if is_string_dtype(df.loc[df.index[0], 'mz']):
+            df['mz'] = df['mz'].apply(lambda x: np.fromstring(x.strip('[]'), sep=' ', dtype=float))
+
+    else:
+        print(f"use different format for {df_path}")
+
+    # reforamting strings to arrays
+    if df_path.endswith(".csv") or df_path.endswith(".tsv"):
+        if is_string_dtype(df['Intensity']):
+            df['Intensity'] = df['Intensity'].apply(lambda x: np.fromstring(x.strip('[]'), sep=' ', dtype = float))
+
+        if is_string_dtype(df['mz']):
+            df['mz'] = df['mz'].apply(lambda x: np.fromstring(x.strip('[]'), sep=' ',  dtype = float))
+
+    return df
