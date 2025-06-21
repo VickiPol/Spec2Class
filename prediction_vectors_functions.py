@@ -98,7 +98,7 @@ def get_pred_vec_dfs(chemclass_list, bin_no, df, net, models_dir, device, params
     dataloader = create_dataloader(X_data, y_pred_df['DB.'].to_list(), params)
     for chemclass in chemclass_list:
         print(chemclass)
-        trained_model_file = f'trained_model_{chemclass}_no_x_val.pt'
+        trained_model_file = f'trained_model_{chemclass.replace(" ", "_")}_no_x_val.pt'
         trained_model_path = os.path.join(models_dir,trained_model_file)
         y_pred, DBs = test_model_batches(trained_model_path,net, device, dataloader, bin_no)
         if DBs.tolist() != y_pred_df['DB.'].to_list():

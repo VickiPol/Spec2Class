@@ -79,7 +79,7 @@ def make_folder(folder_path, folder_name):
 
     return new_folder_dir
 
-def read_df_and_format_mz_intensity_arrays(df_path):
+def read_df_and_format_mz_intensity_arrays_old(df_path):
     """
     This function reads df in .csv/.tsv or .pkl formats and converts the mz and Intensity lists to np arrays
     :param df_path: path to the input df
@@ -113,3 +113,52 @@ def read_df_and_format_mz_intensity_arrays(df_path):
             df['mz'] = df['mz'].apply(lambda x: np.fromstring(x.strip('[]'), sep=' ',  dtype = float))
 
     return df
+    
+
+
+def _to_float_array(x):
+    """
+    Convert one cell value to a 1-D NumPy float array.
+    Accepts strings like "[1.0 2.0]", Python lists,
+    tuples, ndarrays, scalars, or NaN.
+    """
+    if isinstance(x, str):
+        # "[100.1 101.2]"  ?  array([100.1, 101.2])
+        return np.fromstring(x.strip("[]"), sep=" ", dtype=float)
+
+    if isinstance(x, (list, tuple, np.ndarray)):
+        return np.asarray(x, dtype=float)
+
+    # scalar (int/float) or NaN ? wrap in array or empty array
+    if pd.isna(x):
+        return np.array([], dtype=float)      # keep missing spectra empty
+    return np.asarray([x], dtype=float)       # single-number spectrum
+
+
+
+
+def read_df_and_format_mz_intensity_arrays(path):
+    """
+    Read a spectra table (.csv, .tsv, .pkl) and ensure the
+    `mz` and `Intensity` columns contain NumPy float arrays.
+    """
+    _, ext = os.path.splitext(path.lower())
+
+    if ext == ".csv":
+        df = pd.read_csv(path)
+    elif ext == ".tsv":
+        df = pd.read_csv(path, sep="\t")
+    elif ext == ".pkl":
+        df = pd.read_pickle(path)
+    else:
+        raise ValueError(
+            f"Unsupported file format '{ext}'; expected .csv, .tsv, or .pkl"
+        )
+
+    for col in ("Intensity", "mz"):
+        if col in df.columns:
+            df[col] = df[col].apply(_to_float_array)
+
+    return df 
+        
+      
